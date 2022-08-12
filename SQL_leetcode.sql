@@ -109,6 +109,81 @@ SELECT name
 FROM customer
 WHERE referee_id <> 2 OR referee_id IS NULL
 
+------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
++-----------------+----------+
+| Column Name     | Type     |
++-----------------+----------+
+| order_number    | int      |
+| customer_number | int      |
++-----------------+----------+
+order_number is the primary key for this table.
+This table contains information about the order ID and the customer ID.
+ 
+
+Write an SQL query to find the customer_number for the customer who has placed the largest number of orders.
+
+The test cases are generated so that exactly one customer will have placed more orders than any other customer.       */
+
+SELECT customer_number
+FROM orders
+GROUP BY customer_number
+ORDER BY COUNT(customer_number) DESC
+LIMIT 1
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| student     | varchar |
+| class       | varchar |
++-------------+---------+
+(student, class) is the primary key column for this table.
+Each row of this table indicates the name of a student and the class in which they are enrolled.
+ 
+
+Write an SQL query to report all the classes that have at least five students.
+
+Return the result table in any order.               */
+
+SELECT class
+FROM courses
+GROUP BY class
+HAVING COUNT(class) >= 5
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| name        | varchar |
+| continent   | varchar |
+| area        | int     |
+| population  | int     |
+| gdp         | int     |
++-------------+---------+
+name is the primary key column for this table.
+Each row of this table gives information about the name of a country, the continent to which it belongs, its area, the population, and its GDP value.
+ 
+
+A country is big if:
+
+it has an area of at least three million (i.e., 3000000 km2), or
+it has a population of at least twenty-five million (i.e., 25000000).
+Write an SQL query to report the name, population, and area of the big countries.            */
+
+SELECT name, population, area
+FROM world
+WHERE area >= 3000000 OR population >= 25000000
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+
+           
+
 
  
 
