@@ -287,8 +287,86 @@ FROM sales
 GROUP BY product_id
 HAVING MIN(sale_date) BETWEEN '2019-01-01' AND '2019-03-31' AND MAX(sale_date) BETWEEN'2019-01-01' AND '2019-03-31')
 
+------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+Table: Employees
+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| employee_id | int     |
+| name        | varchar |
+| salary      | int     |
++-------------+---------+
+employee_id is the primary key for this table.
+Each row of this table indicates the employee ID, employee name, and salary.
+ 
+
+Write an SQL query to calculate the bonus of each employee. The bonus of an employee is 100% of their salary if the ID of the employee is an odd number and the employee name does not start with the character 'M'. The bonus of an employee is 0 otherwise.
+
+Return the result table ordered by employee_id.       */
+
+SELECT employee_id,  
+CASE 
+    WHEN MOD(employee_id, 2) = 1 AND name NOT LIKE 'M%' THEN salary 
+    ELSE 0
+END AS bonus
+FROM employees
+ORDER BY employee_id
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+
+Table: Salary
+
++-------------+----------+
+| Column Name | Type     |
++-------------+----------+
+| id          | int      |
+| name        | varchar  |
+| sex         | ENUM     |
+| salary      | int      |
++-------------+----------+
+id is the primary key for this table.
+The sex column is ENUM value of type ('m', 'f').
+The table contains information about an employee.
+ 
+
+Write an SQL query to swap all 'f' and 'm' values (i.e., change all 'f' values to 'm' and vice versa) with a single update statement and no intermediate temporary tables.
+
+Note that you must write a single update statement, do not write any select statement for this problem.      */
+
+UPDATE salary
+SET sex = CASE 
+                WHEN sex = 'm' THEN 'f'
+                WHEN sex = 'f' THEN 'm'
+                END
 
 
+------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+Table: Person
+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| email       | varchar |
++-------------+---------+
+id is the primary key column for this table.
+Each row of this table contains an email. The emails will not contain uppercase letters.
+ 
+
+Write an SQL query to delete all the duplicate emails, keeping only one unique email with the smallest id.
+Note that you are supposed to write a DELETE statement and not a SELECT one.
+
+After running your script, the answer shown is the Person table. The driver will first compile and run your piece of code and then show the Person table. 
+The final order of the Person table does not matter.              */
+
+DELETE p1 FROM Person p1,
+    Person p2
+WHERE
+    p1.Email = p2.Email AND p1.Id > p2.Id
 
 
 
