@@ -389,6 +389,7 @@ Return the result table ordered by user_id.                  */
 SELECT user_id, 
                CONCAT(UCASE(SUBSTRING(name, 1,1)), LCASE(SUBSTRING(name, 2, LENGTH(name) + 1))) AS name
 FROM users
+ORDER BY user_id
 
 
 
