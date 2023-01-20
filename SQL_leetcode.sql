@@ -391,6 +391,41 @@ SELECT user_id,
 FROM users
 ORDER BY user_id
 
+------------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+Table: Department
+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| revenue     | int     |
+| month       | varchar |
++-------------+---------+
+(id, month) is the primary key of this table.
+The table has information about the revenue of each department per month.
+The month has values in ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"].
+ 
+
+Write an SQL query to reformat the table such that there is a department id column and a revenue column for each month.
+
+Return the result table in any order.     */
+------------------------------------------------------------------------------------------------------------------------------------------------------
+SELECT id,
+SUM(CASE WHEN month = 'Jan' THEN revenueEND) AS 'Jan_Revenue',
+SUM(CASE WHEN month = 'Feb' THEN revenueEND) AS 'Feb_Revenue',
+SUM(CASE WHEN month = 'Mar' THEN revenueEND) AS 'Mar_Revenue',
+SUM(CASE WHEN month = 'Apr' THEN revenueEND) AS 'Apr_Revenue',
+SUM(CASE WHEN month = 'May' THEN revenueEND) AS 'May_Revenue',
+SUM(CASE WHEN month = 'Jun' THEN revenueEND) AS 'Jun_Revenue',
+SUM(CASE WHEN month = 'Jul' THEN revenueEND) AS 'Jul_Revenue',
+SUM(CASE WHEN month = 'Aug' THEN revenueEND) AS 'Aug_Revenue',
+SUM(CASE WHEN month = 'Sep' THEN revenueEND) AS 'Sep_Revenue',
+SUM(CASE WHEN month = 'Oct' THEN revenueEND) AS 'Oct_Revenue',
+SUM(CASE WHEN month = 'Nov' THEN revenueEND) AS 'Nov_Revenue',
+SUM(CASE WHEN month = 'Dec' THEN revenueEND) AS 'Dec_Revenue'
+FROM department
+GROUP BY id
 
 
 
