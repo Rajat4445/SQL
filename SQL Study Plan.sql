@@ -284,6 +284,16 @@ The employee's name is missing, or
 The employee's salary is missing.
 Return the result table ordered by employee_id in ascending order.*/
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SELECT e.employee_id FROM employees AS e 
+LEFT JOIN salaries AS s 
+ON e.employee_id = s.employee_id
+WHERE s.salary  is NULL
+UNION
+SELECT s.employee_id FROM salaries AS s
+LEFT JOIN employees AS e 
+ON e.employee_id = s.employee_id
+WHERE e.name is NULL
+ORDER BY employee_id;
 
 
 
