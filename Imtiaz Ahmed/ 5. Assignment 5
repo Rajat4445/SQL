@@ -1,0 +1,41 @@
+-- Tables used in the Assignment
+SELECT * FROM students;            
+SELECT * FROM student_enrollment;
+SELECT * FROM Courses;
+
+-- Write a query without using JOINS that returns the names of the students taking PHYSICS and US HISTORY (DO AGAIN!!)
+
+SELECT student_name, student_no FROM students WHERE 
+student_no IN (
+	 SELECT student_no FROM student_enrollment WHERE course_no IN
+		(SELECT course_no FROM courses WHERE course_title IN ('US History', 'Physics')) GROUP BY student_no HAVING COUNT(*) = 2)  ;
+
+-- Another way
+SELECT student_name FROM students 
+WHERE student_no IN 
+(SELECT student_no FROM student_enrollment WHERE course_no IN (SELECT course_no FROM courses WHERE course_title = 'Physics')) AND
+student_no IN (SELECT student_no FROM student_enrollment WHERE course_no IN (SELECT course_no FROM courses WHERE course_title = 'US History'));
+
+   											
+-- Write a query that retursn the name of the student that is taking the highest number of courses	
+
+SELECT student_name FROM students 
+WHERE student_no IN (
+SELECT student_no FROM student_enrollment
+GROUP BY student_no
+ORDER BY COUNT(student_no) DESC
+LIMIT 1);
+
+
+-- Subqueries can be used in the FROM clause and the WHERE clause but cannot be used in the SELECT clause
+-- False
+
+
+-- Write a query to find the student that is the oldest. Don't use LIMIT or ORDER BY
+
+SELECT student_name FROM students 
+WHERE age IN (SELECT MAX(age) FROM students);
+
+
+
+
