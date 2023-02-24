@@ -685,7 +685,7 @@ Write an SQL query that reports the products that were only sold in the first qu
 
 Return the result table in any order.
 
-/*
+*/
 SELECT product_id , product_name
 FROM product
 WHERE product_id IN
