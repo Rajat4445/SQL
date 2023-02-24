@@ -558,3 +558,9 @@ Write an SQL query to report the names of all the salespersons who did not have 
 Return the result table in any order.
 
 */
+SELECT name FROM salesperson
+WHERE sales_id not IN (SELECT sales_id
+FROM orders o
+LEFT JOIN company c
+ON o.com_id = c.com_id
+WHERE c.name LIKE 'RED')
