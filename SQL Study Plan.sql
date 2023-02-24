@@ -651,3 +651,12 @@ LEFT JOIN transactions
 ON users.account = transactions.account
 GROUP BY name
 HAVING SUM(amount) > 10000
+
+
+SELECT product_id , product_name
+FROM product
+WHERE product_id IN
+(SELECT product_id
+FROM sales
+GROUP BY product_id
+HAVING MIN(sale_date) BETWEEN '2019-01-01' AND '2019-03-31' AND MAX(sale_date) BETWEEN'2019-01-01' AND '2019-03-31')
