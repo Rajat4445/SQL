@@ -645,3 +645,9 @@ Write an SQL query to report the name and balance of users with a balance higher
 Return the result table in any order.
 */
 
+SELECT name, SUM(amount) AS balance
+FROM users
+LEFT JOIN transactions
+ON users.account = transactions.account
+GROUP BY name
+HAVING SUM(amount) > 10000
