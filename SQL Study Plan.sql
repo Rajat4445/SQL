@@ -417,3 +417,7 @@ Write an SQL query to report the first name, last name, city, and state of each 
 
 Return the result table in any order.
 */
+SELECT firstName, lastname, city, state
+FROM person
+LEFT JOIN address
+ON person.personid = address.personid
