@@ -103,7 +103,7 @@ LEFT JOIN orders
 ON customers.id = orders.customerID
 WHERE customerID IS NULL
 
-SELECT name AS customers FROM customers                                           -- Another Approach
+SELECT name AS customers FROM customers                                          
 WHERE id NOT IN (SELECT DISTINCT(customerID) FROM orders)
 
 
