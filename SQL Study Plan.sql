@@ -760,5 +760,5 @@ ON users.id = rides.user_id
 GROUP BY rides.user_id
 ORDER BY travelled_distance DESC, name ASC
 
-/*
+
 
