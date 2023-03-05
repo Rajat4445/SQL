@@ -810,3 +810,14 @@ GROUP BY player_id
 Write an SQL query to find for each user, the join date and the number of orders they made as a buyer in 2019.
 
 Return the result table in any order. */
+
+SELECT user_id AS buyer_id, join_date, 
+CASE 
+    WHEN COUNT(order_id) >= 1 THEN COUNT(order_id)
+    ELSE 0            -- To deal with NULL values
+    END AS orders_in_2019
+FROM users
+LEFT JOIN orders
+ON users.user_id = orders.buyer_id
+AND YEAR(order_date) = 2019
+GROUP BY user_id   
