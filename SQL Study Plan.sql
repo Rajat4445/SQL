@@ -819,5 +819,6 @@ CASE
 FROM users
 LEFT JOIN orders
 ON users.user_id = orders.buyer_id
-AND YEAR(order_date) = 2019                       -- Why it does not work with "WHERE" clause
+AND YEAR(order_date) = 2019                       -- Why it does not work with "WHERE" clause; because where removes all the records which were not
+                                           -- ordered in 2019 (user_id: 3 and 4), therefore we select '2019' in FROM clause
 GROUP BY user_id   
