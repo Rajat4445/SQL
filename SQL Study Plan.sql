@@ -805,3 +805,8 @@ Return the result table in any order.     */
 SELECT player_id, MIN(event_date) AS first_login
 FROM activity
 GROUP BY player_id
+
+/*
+Write an SQL query to find for each user, the join date and the number of orders they made as a buyer in 2019.
+
+Return the result table in any order. */
