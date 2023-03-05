@@ -819,5 +819,5 @@ CASE
 FROM users
 LEFT JOIN orders
 ON users.user_id = orders.buyer_id
-AND YEAR(order_date) = 2019
+AND YEAR(order_date) = 2019                       -- Why it does not work with "WHERE" clause
 GROUP BY user_id   
