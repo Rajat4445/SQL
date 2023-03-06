@@ -12,10 +12,10 @@ SELECT first_name || ' ' || last_name AS full_name, salary > 40000 FROM employee
 -- Exercise: Put all the true values on the top from the previous query
 
 SELECT first_name || ' ' || last_name AS full_name, salary > 40000 FROM employees -- boolean column
-ORDER BY salary desc;
+ORDER BY salary DESC;
 
 
-SELECT department, ('Clothing' IN (department, first_name)) FROM employees;  -- Similar to OR 
+SELECT department, ('Clothing' IN (department, first_name)) FROM employees;  -- Similar to OR, checking in both columns (department and first_name) 
 
 SELECT department, (department LIKE '%oth%') FROM employees;
 
