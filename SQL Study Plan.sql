@@ -822,3 +822,21 @@ ON users.user_id = orders.buyer_id
 AND YEAR(order_date) = 2019                       -- Why it does not work with "WHERE" clause; because where removes all the records which were not
                                            -- ordered in 2019 (user_id: 3 and 4), therefore we select '2019' in FROM clause
 GROUP BY user_id   
+
+/*
+Table: Person
+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| email       | varchar |
++-------------+---------+
+id is the primary key column for this table.
+Each row of this table contains an email. The emails will not contain uppercase letters.
+ 
+
+Write an SQL query to report all the duplicate emails. Note that it's guaranteed that the email field is not NULL.
+
+Return the result table in any order.      */
+
