@@ -20,7 +20,7 @@ Each row of this table contains an email. The emails will not contain uppercase 
 
 Write an SQL query to report all the duplicate emails.
 
-Return the result table in any order. */
+Return the result table in any order */
 
 SELECT email
 FROM person
