@@ -39,7 +39,7 @@ Table: Customers
 | name        | varchar |
 +-------------+---------+
 id is the primary key column for this table.
-Each row of this table indicates the ID and name of a customer.
+Each row of this table indicates the ID and name of a customer
  
 
 Table: Orders
